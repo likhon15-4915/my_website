@@ -1,0 +1,150 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.bg {
+  position: relative;
+  height: 90%;
+  background-image: url('bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+/* Semi-transparent overlay for better readability */
+.bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.content p {
+  font-size: 30px;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  margin: 0;
+}
+
+.content p img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+body > p {
+  padding: 20px;
+  font-size: 18px;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 3;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ FIXED HERO TEXT LAYOUT */
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  max-width: 90%;
+  z-index: 1;
+}
+
+.center-text h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* .center-text h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  text-align: center;
+}
+ */
+
+.center-text p {
+  font-size: 28px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ✅ Add this to make it responsive */
+@media (min-width: 768px) {
+  .center-text h1 {
+    font-size: 56px;
+  }
+
+  .center-text p {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .center-text h1 {
+    font-size: 72px;
+  }
+
+  .center-text p {
+    font-size: 36px;
+  }
+}
+.divider {
+  border: 0;
+  height: 2px;
+  background: black;
+  margin: 30px auto;
+  width: 80%;
+  opacity: 0.5; /* optional */
+}
+
+
