@@ -148,3 +148,182 @@ body > p {
 }
 
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f8f8f8;
+}
+
+.container1 {
+  display: flex;
+  max-width: 1200px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  gap: 40px;
+}
+
+.left {
+  flex: 1;
+}
+
+.left img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h4 {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0 0 10px 0;
+}
+
+.right h1 {
+  font-size: 42px;
+  margin: 0 0 20px 0;
+}
+
+.right p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
+
+.cta .arrow {
+  display: inline-block;
+  background: #3b4d56;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 18px;
+}
+.footer {
+  background: #3b4d56; /* dark tone to match your CTA arrow */
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.container2 {
+  display: flex;
+  flex-direction: row-reverse; /* This puts image on right */
+  max-width: 1200px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  gap: 40px;
+}
+/* === Section with background === */
+.foster-section {
+  background-image: url('a.png'); /* <-- replace with your image path */
+  background-size: cover;
+  background-position: center;
+  padding: 100px 40px;
+  color: #000;
+  position: relative;
+}
+
+/* Optional: subtle overlay for better contrast */
+.foster-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7); /* light overlay for faded look */
+}
+
+/* === Flex layout === */
+.foster-content {
+  position: relative; /* keep content above overlay */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  gap: 60px;
+}
+
+.foster-left {
+  flex: 1;
+}
+
+.foster-left h1 {
+  font-size: 60px;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.foster-left p {
+  font-size: 22px;
+  max-width: 600px;
+}
+
+.foster-right {
+  flex: 1;
+}
+
+.foster-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.foster-right li {
+  border-bottom: 1px solid #888;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.foster-right a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .foster-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .foster-left h1 {
+    font-size: 40px;
+  }
+
+  .foster-right a {
+    font-size: 20px;
+  }
+}
+
