@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biodata: Raisul</title>
+  <link rel="icon" type="image/x-icon" href="img.jpg" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+    background-color: #e0eeff;
+    margin: 10px;
+    border: 3px solid #cccccc;
+    padding: 10px;
+    color: #333333;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #1E2761;
+    margin-bottom: 10px;
+}
+
+div {
+    text-decoration: underline;
+    text-decoration-color: #7A2048;
+    text-underline-offset: 3px;
+    color: #408EC6;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+table, tr, th, td {
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #A7BEAE;
+    color: #1E2761;
+    padding: 8px;
+}
+
+td {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 8px;
+}
+
+tr:nth-child(even) td {
+    background-color: #f7fbff;
+}
+
+#fp {
+      display: block;
+      margin: 0 auto;
+      border-radius: 5%;
+      
+}
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid green;
+}
+
+  </style>
+</head>
+<body>
+  <h2>BIODATA</h2>
+  <h2>Personal Information</h2>
+  
+  <form id="biodataForm" action="/action.php" method="POST">
+    <img src="img.jpg" alt="Profile Photo" id="fp" width="100" /><br />
+
+    <label for="fname">Name:</label>
+    <input type="text" id="fname" name="fname" value="Md Raisul Kabir Khan Likhon" pattern="[A-Za-z ]+" size="30" required /><br />
+
+    <label for="fdob">Date of Birth:</label>
+    <input type="date" id="fdob" name="fdob" value="2002-04-22" required /><br />
+
+    <label for="fbp">Birth Place:</label>
+    <input type="text" id="fbp" name="fbp" value="Dhaka" required pattern="[A-Za-z ]+"/><br />
+
+    <label for="fr">Religion:</label>
+    <input type="text" id="fr" name="fr" value="Islam" pattern="[A-Za-z ]+" required /><br />
+
+ <label>Marital Status:</label>
+<label><input type="radio" name="fm" value="Single" checked> Single</label>
+<label><input type="radio" name="fm" value="Married"> Married</label>
+<label><input type="radio" name="fm" value="Widowed"> Widowed</label>
+<label><input type="radio" name="fm" value="Married"> Divorced</label>
+<br>
+
+
+    <label for="fh">Height:</label>
+    <input type="text" id="fh" name="fh" value="5 feet 8 inches" required/><br />
+
+    <label for="fw">Weight:</label>
+    <input type="number" id="fw" name="fw" value="67" /><br />
+
+    <label for="fbg">Blood Group:</label>
+    <input type="text" id="fbg" name="fbg" value="AB(+ve)" /><br />
+
+    <label for="fn">Nationality:</label>
+    <input type="text" id="fn" name="fn" value="Bangladeshi" pattern="[A-Za-z ]+" required /><br />
+
+    <label for="fo">Occupation:</label>
+    <input type="text" id="fo" name="fo" value="Student" pattern="[A-Za-z ]+" required /><br />
+
+    <label for="fc">Contact:</label>
+    <input type="tel" id="fc" name="fc" value="01609038425" pattern="[0-9]{11}" required /><br />
+
+    <label for="fa">Address:</label>
+    <input type="text" id="fa" name="fa" value="Abed Tower, Joar Shahara, Vatara" required /><br />
+
+    <h2>Family Information</h2>
+
+    <label for="ffn">Father's Name:</label>
+    <input type="text" id="ffn" name="ffn" value="Md. Bahalul Kaber Khan" required /><br />
+
+    <label for="ffo">Father's Occupation:</label>
+    <input type="text" id="ffo" name="ffo" value="Business" /><br />
+
+    <label for="fmn">Mother's Name:</label>
+    <input type="text" id="fmn" name="fmn" value="Rabea Akter Ripa" required /><br />
+
+    <label for="fb">Brothers:</label>
+    <input type="number" id="fb" name="fb" value="0" /><br />
+
+    <label for="fs">Sisters:</label>
+    <input type="number" id="fs" name="fs" value="1" /><br />
+
+    <label for="fra">Residential Address:</label>
+    <input type="text" id="fra" name="fra" value="Khan Niketon, Lalmohan, Bhola" required /><br />
+
+    <h2>Educational Qualifications</h2>
+
+    <table border="1" cellspacing="0">
+      <tr>
+        <th>Program</th>
+        <th>Subject</th>
+        <th>Institution</th>
+        <th>Board</th>
+        <th>Year</th> 
+        <th>Grade</th>
+      </tr>
+      <tr>
+        <td><input type="text" name="program1" value="B.Sc" required /></td>
+        <td><input type="text" name="subject1" value="CSE" required /></td>
+        <td><input type="text" name="institution1" value="Daffodil International University" required /></td>
+        <td><input type="text" name="board1" value="" /></td>
+        <td><input type="text" name="year1" value="Cont.." /></td>
+        <td><input type="text" name="grade1" value="Cont.." /></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="program2" value="H.S.C" required /></td>
+        <td><input type="text" name="subject2" value="Science" required /></td>
+        <td><input type="text" name="institution2" value="Milestone College" required /></td>
+        <td><input type="text" name="board2" value="Dhaka" required /></td>
+        <td><input type="text" name="year2" value="2020" required /></td>
+        <td><input type="text" name="grade2" value="A+" required /></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="program3" value="S.S.C" required /></td>
+        <td><input type="text" name="subject3" value="Science" required /></td>
+        <td><input type="text" name="institution3" value="Ashraf Nagar High School" required /></td>
+        <td><input type="text" name="board3" value="Barisal" required /></td>
+        <td><input type="text" name="year3" value="2018" required /></td>
+        <td><input type="text" name="grade3" value="A+" required /></td>
+      </tr>
+    </table><br />
+ 
+    <h2>Hobbies</h2>
+    <fieldset>
+      <!-- <legend style="font-weight: bold;">Select your hobbies:</legend> -->
+      <p>Select your hobbies:</p>
+      <label>
+        <input type="checkbox" name="hobbies" value="Reading"> Reading
+      </label><br>
+      <label>
+        <input type="checkbox" name="hobbies" value="Traveling"> Traveling
+      </label><br>
+      <label>
+        <input type="checkbox" name="hobbies" value="Coding"> Coding
+      </label><br>
+      <label>
+        <input type="checkbox" name="hobbies" value="Music"> Music
+      </label><br>
+      <label>
+        <input type="checkbox" name="hobbies" value="Photography"> Photography
+      </label><br>
+    </fieldset>
+
+
+ 
+
+  
+    <button type="submit">Submit</button>
+  </form>
+
+<script>
+  document.querySelectorAll('#biodataForm input').forEach(input => {
+    input.addEventListener('input', function () {
+      if (this.checkValidity()) {
+        this.style.borderColor = 'green';
+      } else {
+        this.style.borderColor = 'red';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

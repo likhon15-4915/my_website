@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alibaba Supplier Signup</title>
+    <link rel="icon" href="fav.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .left-panel {
+      position: relative;
+      width: 55%;
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80') center center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 1;
+    }
+    .testimonial {
+      position: relative;
+      z-index: 2;
+      color: black;
+      max-width: 500px;
+      padding: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.85);
+    }
+    .flag {
+      width: 28px;
+      vertical-align: middle;
+      margin-bottom: 12px;
+    }
+    .quote {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .author {
+      font-size: 1rem;
+      color: #555;
+    }
+    .right-panel {
+      width: 45%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 350px;
+    }
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-container h2 {
+      margin-bottom: 18px;
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+    .location {
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+    .flag-small {
+      width: 18px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .social-btn {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #444;
+    }
+    .social-btn:hover { background: #005983; color: white; }
+    .divider {
+      text-align: center;
+      margin: 18px 0 12px 0;
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #222;
+      border-radius: 4px;
+      font-size: 1rem;
+      background: #fff;
+      color: #222;
+      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .input-field:focus, .input-field:hover {
+      border-color: #005983;
+      background: #f7fafd;
+    }
+    .input-error {
+      border-color: #ed6a6a !important;
+      background: #fff3f3 !important;
+      color: #ed6a6a !important;
+    }
+    .input-ok {
+      border-color: #43a047 !important;
+      background: #fbfff9 !important;
+      color: #222 !important;
+    }
+    #emailError, #fnameError, #lnameError {
+      color: #ed6a6a;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      display: none;
+    }
+    .validation-list {
+      font-size: 0.96rem;
+      margin-bottom: 8px;
+      display: none;
+    }
+    .validation-list.active { display: block; }
+    .validation-span {
+      color: #222;
+      transition: color 0.18s;
+      display: block;
+    }
+    .validation-error {
+      color: #ed6a6a;
+    }
+    .validation-success {
+      color: #43a047;
+    }
+    .slider-container {
+      width: 100%;
+      margin-bottom: 18px;
+      user-select: none;
+    }
+    .slider-track {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      height: 40px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .slider-btn {
+      width: 48px;
+      height: 100%;
+      background: #005983;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: background 0.2s;
+      z-index: 2;
+      user-select: none;
+      touch-action: none;
+    }
+    .slider-btn.verified {
+      background: #43a047 !important;
+      cursor: default;
+    }
+    .slider-btn.disabled {
+      background: #c4ccd8 !important;
+      cursor: not-allowed;
+      color: #888 !important;
+    }
+    .slider-text {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 40px;
+      color: #555;
+      z-index: 1;
+      font-size: 1rem;
+      pointer-events: none;
+      user-select: none;
+    }
+    .slider-track.verified {
+      background: #e1f6e7;
+      border-color: #43a047;
+    }
+    .slider-track.disabled {
+      background: #f5f6f8 !important;
+      border-color: #e6e6e6 !important;
+    }
+    .create-account, .create-account-blue {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      margin-bottom: 22px;
+      cursor: pointer;
+    }
+    .create-account {
+      background: #ddd;
+      color: #888;
+      cursor: not-allowed;
+    }
+    .create-account-blue {
+      background: #005983;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .create-account-blue[disabled] {
+      background: #ddd;
+      color: #888;
+      cursor: not-allowed;
+    }
+    .create-account-blue:hover:not([disabled]) {
+      background: #0070b7;
+    }
+    .checkbox {
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #005983;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .signin-link {
+      text-align: center;
+      font-size: 0.98rem;
+      color: #444;
+    }
+    .signin-link a {
+      color: #1877f3;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+    .label-inline {
+      display: inline-block;
+      margin-right: 6px;
+    }
+    @media (max-width: 900px) {
+      .container { flex-direction: column; }
+      .left-panel, .right-panel { width: 100%; height: 50vh; min-width: 0; }
+      .right-panel { min-width: 0; }
+      .form-container { max-width: 98vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="overlay"></div>
+      <div class="testimonial">
+        <p class="quote">
+          "In just 1 year, LTA International generated 14 new customers with new sales growth totaling $1.5 million."
+        </p>
+        <div class="author">
+          <strong>Andrea Vitiello</strong><br>
+          LTA International, Fundador
+        </div>
+      </div>
+    </div>
+    <div class="right-panel">
+      <!-- First (Simple) Form -->
+      <div class="form-container" id="firstForm">
+        <h2>Sign up as a supplier</h2>
+        <div class="location">
+          Company location: <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg" alt="Bangladesh Flag" class="flag-small"> Bangladesh
+        </div>
+        <button class="social-btn"><i class="fab fa-google"></i> Continue with Google</button>
+        <button class="social-btn"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+        <button class="social-btn"><i class="fab fa-linkedin-in"></i> Continue with LinkedIn</button>
+        <div class="divider">Or</div>
+        <input type="email" placeholder="Email" class="input-field" id="emailInput">
+        <button class="create-account" id="createAccountBtn">Create account</button>
+        <div class="signin-link">
+          Already have an account? <a href="#">Sign in</a>
+        </div>
+      </div>
+      <!-- Second (Detailed) Form -->
+      <div class="form-container" id="secondForm" style="display: none;">
+        <button class="back-btn" id="backBtn">&larr; Back</button>
+        <h2>Sign up as a supplier</h2>
+        <div class="location">
+          Company location: <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg" alt="Bangladesh Flag" class="flag-small"> Bangladesh
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: space-between; margin-bottom: 18px;">
+          <button class="social-btn"><i class="fab fa-google"></i></button>
+          <button class="social-btn"><i class="fab fa-facebook-f"></i></button>
+          <button class="social-btn"><i class="fab fa-linkedin-in"></i></button>
+        </div>
+        <div class="divider">Or</div>
+
+        <input type="email" placeholder="Email" class="input-field" id="email2">
+        <div id="emailError">Please enter a valid email address</div>
+
+        <input type="password" placeholder="Password" class="input-field" id="password2">
+        <div id="passwordValidation" class="validation-list">
+          <span id="pw_len" class="validation-span">Contains 6 to 20 characters</span>
+          <span id="pw_chars" class="validation-span">Contains letters, numbers or symbols only</span>
+          <span id="pw_mix" class="validation-span">Contains at least two of the following: letters, numbers or symbols</span>
+        </div>
+        <input type="text" placeholder="First name" class="input-field" id="fname2">
+        <div id="fnameError">First name can only contain letters and spaces.</div>
+        <input type="text" placeholder="Last name" class="input-field" id="lname2">
+        <div id="lnameError">Last name can only contain letters and spaces.</div>
+
+        <!-- Slide-to-verify -->
+        <div id="sliderContainer" class="slider-container">
+          <div id="sliderTrack" class="slider-track">
+            <span id="sliderText" class="slider-text">Please slide to verify</span>
+            <div id="sliderBtn" class="slider-btn"><i class="fa fa-angle-double-right"></i></div>
+          </div>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="termsCheck">
+          <label for="termsCheck" class="label-inline">
+            I agree to the Free Membership Agreement, Terms of Use, and Privacy Policy of Alibaba.com.
+          </label>
+        </div>
+        <button class="create-account-blue" id="detailedCreateBtn" disabled>Create account</button>
+        <div class="signin-link">
+          Already have an account? <a href="#">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validateEmail(email) {
+      const re = /^\S+@\S+\.\S+$/;
+      return re.test(email);
+    }
+    function passwordLengthValid(pw) {
+      return pw.length >= 6 && pw.length <= 20;
+    }
+    function passwordCharsValid(pw) {
+      return !/\s/.test(pw);
+    }
+    function passwordMixValid(pw) {
+      const hasLetter = /[a-zA-Z]/.test(pw);
+      const hasNumber = /\d/.test(pw);
+      const hasSymbol = /[^a-zA-Z0-9]/.test(pw);
+      return [hasLetter, hasNumber, hasSymbol].filter(Boolean).length >= 2;
+    }
+    function onlyLettersAndSpaces(str) {
+      return /^[A-Za-z\s]+$/.test(str.trim());
+    }
+
+    // State so slider can't be used before all input is valid
+    let allowSlider = false;
+
+    // NAV
+    document.getElementById('emailInput').addEventListener('click', function() {
+      document.getElementById('firstForm').style.display = 'none';
+      document.getElementById('secondForm').style.display = 'block';
+      document.getElementById('email2').focus();
+      resetEmailView();
+      resetPasswordView();
+      resetSlider();
+      updateSliderState();
+    });
+
+    document.getElementById('backBtn').addEventListener('click', function() {
+      document.getElementById('secondForm').style.display = 'none';
+      document.getElementById('firstForm').style.display = 'block';
+      document.getElementById('emailInput').focus();
+    });
+
+    // EMAIL validation logic
+    const email2 = document.getElementById('email2');
+    const emailError = document.getElementById('emailError');
+    emailError.style.display = 'none';
+    function resetEmailView() {
+      email2.className = 'input-field';
+      emailError.style.display = 'none';
+    }
+    let emailTouched = false;
+    email2.addEventListener('focus', function() {
+      emailTouched = true;
+      if (!email2.value) {
+        emailError.textContent = 'Please enter a valid email address';
+        emailError.style.color = '#222';
+        emailError.style.display = 'block';
+      }
+    });
+    email2.addEventListener('blur', function() {
+      if (!email2.value) {
+        resetEmailView();
+      }
+    });
+    email2.addEventListener('input', function() {
+      emailError.style.display = 'block';
+      if (!validateEmail(email2.value)) {
+        if (email2.value === '') {
+          email2.className = 'input-field';
+          emailError.style.color = '#222';
+          emailError.textContent = 'Please enter a valid email address';
+        } else {
+          email2.className = 'input-field input-error';
+          emailError.style.color = '#ed6a6a';
+          emailError.textContent = 'Please enter a valid email address';
+        }
+      } else {
+        email2.className = 'input-field input-ok';
+        emailError.style.display = 'none';
+      }
+      validateDetailedForm();
+      updateSliderState();
+    });
+
+    // PASSWORD validation logic
+    const password2 = document.getElementById('password2');
+    const passwordValidation = document.getElementById('passwordValidation');
+    const pwLen = document.getElementById('pw_len');
+    const pwChars = document.getElementById('pw_chars');
+    const pwMix = document.getElementById('pw_mix');
+    function resetPasswordView() {
+      password2.className = 'input-field';
+      passwordValidation.classList.remove('active');
+      pwLen.className = 'validation-span';
+      pwChars.className = 'validation-span';
+      pwMix.className = 'validation-span';
+    }
+    let pwTouched = false;
+    password2.addEventListener('focus', function() {
+      pwTouched = true;
+      passwordValidation.classList.add('active');
+      if (!password2.value) {
+        pwLen.className = 'validation-span';
+        pwChars.className = 'validation-span';
+        pwMix.className = 'validation-span';
+      }
+    });
+    password2.addEventListener('blur', function() {
+      if (!password2.value) resetPasswordView();
+    });
+    password2.addEventListener('input', function() {
+      passwordValidation.classList.add('active');
+      let val = password2.value;
+      let allValid = true;
+
+      if (val === '') {
+        pwLen.className = 'validation-span';
+        pwChars.className = 'validation-span';
+        pwMix.className = 'validation-span';
+        password2.className = 'input-field';
+      } else {
+        if (passwordLengthValid(val)) {
+          pwLen.className = 'validation-span validation-success';
+        } else {
+          pwLen.className = 'validation-span validation-error';
+          allValid = false;
+        }
+        if (passwordCharsValid(val)) {
+          pwChars.className = 'validation-span validation-success';
+        } else {
+          pwChars.className = 'validation-span validation-error';
+          allValid = false;
+        }
+        if (passwordMixValid(val)) {
+          pwMix.className = 'validation-span validation-success';
+        } else {
+          pwMix.className = 'validation-span validation-error';
+          allValid = false;
+        }
+        if (allValid) {
+          password2.className = 'input-field input-ok';
+        } else {
+          password2.className = 'input-field input-error';
+        }
+      }
+      validateDetailedForm();
+      updateSliderState();
+    });
+
+    // FIRST NAME / LAST NAME VALIDATION
+    const fname2 = document.getElementById('fname2');
+    const lname2 = document.getElementById('lname2');
+    const fnameError = document.getElementById('fnameError');
+    const lnameError = document.getElementById('lnameError');
+    fnameError.style.display = 'none';
+    lnameError.style.display = 'none';
+
+    fname2.addEventListener('input', function() {
+      if (fname2.value.trim() === '' || onlyLettersAndSpaces(fname2.value)) {
+        fname2.classList.remove('input-error');
+        fnameError.style.display = 'none';
+      } else {
+        fname2.classList.add('input-error');
+        fnameError.style.display = 'block';
+      }
+      validateDetailedForm(); updateSliderState();
+    });
+    lname2.addEventListener('input', function() {
+      if (lname2.value.trim() === '' || onlyLettersAndSpaces(lname2.value)) {
+        lname2.classList.remove('input-error');
+        lnameError.style.display = 'none';
+      } else {
+        lname2.classList.add('input-error');
+        lnameError.style.display = 'block';
+      }
+      validateDetailedForm(); updateSliderState();
+    });
+
+    document.getElementById('termsCheck').addEventListener('change', function() {
+      validateDetailedForm(); updateSliderState();
+    });
+
+    // SLIDE TO VERIFY LOGIC - DISABLED unless all input valid
+    let sliderBtn = document.getElementById('sliderBtn');
+    let sliderTrack = document.getElementById('sliderTrack');
+    let sliderText = document.getElementById('sliderText');
+    let sliderContainer = document.getElementById('sliderContainer');
+    let isSliding = false, startX = 0, currentX = 0, sliderWidth = 0, maxLeft = 0;
+    let verified = false;
+
+    function resetSlider() {
+      verified = false;
+      sliderBtn.style.left = '0';
+      sliderTrack.classList.remove('verified', 'disabled');
+      sliderBtn.classList.remove('verified', 'disabled');
+      sliderText.textContent = 'Please slide to verify';
+      sliderBtn.style.pointerEvents = '';
+      sliderTrack.style.pointerEvents = '';
+    }
+
+    function setVerified() {
+      verified = true;
+      sliderBtn.style.left = (maxLeft) + 'px';
+      sliderBtn.classList.add('verified');
+      sliderTrack.classList.add('verified');
+      sliderText.textContent = 'Verification complete';
+      sliderBtn.style.pointerEvents = 'none';
+      sliderTrack.style.pointerEvents = 'none';
+      validateDetailedForm();
+    }
+
+    function updateSliderState() {
+      if (allInputsValid()) {
+        sliderBtn.classList.remove('disabled');
+        sliderTrack.classList.remove('disabled');
+        sliderBtn.style.pointerEvents = '';
+        sliderTrack.style.pointerEvents = '';
+      } else {
+        if (!verified) {
+          sliderBtn.classList.add('disabled');
+          sliderTrack.classList.add('disabled');
+          sliderBtn.style.left = '0';
+          sliderBtn.style.pointerEvents = 'none';
+          sliderTrack.style.pointerEvents = 'none';
+          sliderText.textContent = 'Please slide to verify';
+        }
+      }
+    }
+
+    function allInputsValid() {
+      const validEmail = validateEmail(email2.value);
+      const pwVal = password2.value;
+      const pwValid = passwordLengthValid(pwVal) && passwordCharsValid(pwVal) && passwordMixValid(pwVal);
+      const fname = fname2.value.trim();
+      const lname = lname2.value.trim();
+      const checked = document.getElementById('termsCheck').checked;
+      const fnameValid = fname !== '' && onlyLettersAndSpaces(fname);
+      const lnameValid = lname !== '' && onlyLettersAndSpaces(lname);
+      return validEmail && pwValid && fnameValid && lnameValid && checked;
+    }
+
+    sliderBtn.addEventListener('mousedown', function(e) {
+      if (verified || !allInputsValid()) return;
+      isSliding = true;
+      startX = e.clientX;
+      sliderWidth = sliderTrack.offsetWidth;
+      maxLeft = sliderWidth - sliderBtn.offsetWidth;
+      document.body.style.userSelect = 'none';
+    });
+    document.addEventListener('mousemove', function(e) {
+      if (!isSliding || verified || !allInputsValid()) return;
+      currentX = Math.min(Math.max(e.clientX - startX, 0), maxLeft);
+      sliderBtn.style.left = currentX + 'px';
+      if ((currentX + 2) >= maxLeft) setVerified();
+    });
+    document.addEventListener('mouseup', function() {
+      if (!isSliding) return;
+      isSliding = false;
+      if (!verified) sliderBtn.style.left = '0';
+      document.body.style.userSelect = '';
+    });
+    sliderBtn.addEventListener('touchstart', function(e) {
+      if (verified || !allInputsValid()) return;
+      isSliding = true;
+      startX = e.touches[0].clientX;
+      sliderWidth = sliderTrack.offsetWidth;
+      maxLeft = sliderWidth - sliderBtn.offsetWidth;
+    });
+    document.addEventListener('touchmove', function(e) {
+      if (!isSliding || verified || !allInputsValid()) return;
+      currentX = Math.min(Math.max(e.touches[0].clientX - startX, 0), maxLeft);
+      sliderBtn.style.left = currentX + 'px';
+      if ((currentX + 2) >= maxLeft) setVerified();
+    });
+    document.addEventListener('touchend', function() {
+      if (!isSliding) return;
+      isSliding = false;
+      if (!verified) sliderBtn.style.left = '0';
+    });
+
+    function validateDetailedForm() {
+      const validEmail = validateEmail(email2.value);
+      const pwVal = password2.value;
+      const pwValid = passwordLengthValid(pwVal) && passwordCharsValid(pwVal) && passwordMixValid(pwVal);
+      const fname = fname2.value.trim();
+      const lname = lname2.value.trim();
+      const fnameValid = fname !== '' && onlyLettersAndSpaces(fname);
+      const lnameValid = lname !== '' && onlyLettersAndSpaces(lname);
+      const checked = document.getElementById('termsCheck').checked;
+      const btn = document.getElementById('detailedCreateBtn');
+      if (validEmail && pwValid && fnameValid && lnameValid && checked && verified) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      resetEmailView();
+      resetPasswordView();
+      resetSlider();
+      updateSliderState();
+    });
+
+    // OPTIONAL: Add redirect on first screen create account button
+    document.getElementById('createAccountBtn').addEventListener('click', function() {
+      window.location.href = 'nextpage.html'; // Change as needed
+    });
+  </script>
+</body>
+</html>
