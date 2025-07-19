@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Page | Commencement</title>
+  <link rel="icon" type="image/x-icon" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      background: #f8f8f8;
+      color: #333;
+    }
+
+    /* --- Top Red Bar --- */
+    .top-red-bar {
+      background-color: rgb(170, 37, 37);
+      color: white;
+      padding: 10px 20px 10px 90px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .top-red-bar p {
+      margin: 0;
+      padding: 0 0 0 0px;
+      font-weight: bold;
+    }
+
+    /* --- Main Header --- */
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .harvard-logo {
+      width: 100px;
+      height: auto;
+            padding: 0 0 0 60px;
+      margin-right: 15px;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #333;
+    }
+
+    .header-text p {
+      margin: 0;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 5px; /* aligns vertically with logo */
+}
+
+.search-area {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.search-area input[type="text"] {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  width: 160px;
+}
+
+.search-area button {
+  background-color: #213a8f;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-left: 1px solid #ccc;
+}
+
+.additional-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 4px;
+}
+
+.additional-info span {
+  font-size: 14px;
+  color: #213a8f;
+  cursor: pointer;
+}
+
+    /* --- Navigation --- */
+    .main-nav {
+      background-color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      padding: 0 0 0 60px;
+    }
+
+    .main-nav li {
+      margin: 0 20px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+      font-weight: 500;
+      padding: 5px 0;
+      display: block;
+      position: relative;
+    }
+
+    .main-nav a:hover {
+      color: rgb(219, 25, 25);
+    }
+
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      margin-top: 5px;
+      right: 0;
+      background: rgb(219, 25, 25);
+      transition: width 0.3s ease;
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* --- Hero Section --- */
+   .hero-section {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Reduced height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px; /* Optional: vertical alignment for overlay */
+}
+
+
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-overlay-content {
+      position: relative;
+      z-index: 2;
+      background-color: #f0f0f0;
+      padding: 40px;
+      border-radius: 8px;
+      max-width: 720px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      text-align: left;
+    }
+
+    .hero-overlay-content h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay-content p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero-overlay-content strong {
+      font-weight: 700;
+    }
+
+    .livestream-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: #213a8f;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .livestream-button:hover {
+      background-color: #0e1f5a;
+      color: white;
+    }
+
+    .arrow-icon {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+    .about-section {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-text h2 {
+  font-size: 30px;
+  border-left: 4px solid #800000;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.info-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 30%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-text {
+  padding: 15px;
+}
+
+.card-text a {
+  color: #1a4a86;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.card-text a:hover {
+  text-decoration: none;
+}
+
+.card-text p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="top-red-bar">
+    <p>HARVARD UNIVERSITY</p>
+  </div>
+
+  <header class="main-header">
+    <div class="header-left">
+      <img src="logo.png" alt="Harvard University Logo" class="harvard-logo" />
+      <div class="header-text">
+        <h1>HARVARD UNIVERSITY</h1>
+        <p>Commencement Office</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="search-area">
+        <input type="text" placeholder="" />
+        <button type="submit">Search</button>
+      </div>
+      <div class="additional-info">
+        <span>Alumni Celebration</span>
+        <span>Office of the University Marshal</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#">Graduates</a></li>
+      <li><a href="#">Guests</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="#">Schedule</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-section">
+    <img src="background.jpg" alt="Harvard Commencement Ceremony" class="hero-bg-image" />
+    <div class="hero-overlay-content">
+      <h2>Harvard University Commencement</h2>
+      <p>
+        Harvard University is proud to celebrate the achievements of our exceptional degree candidates in the class of 2025.
+        Please join us via the livestream starting at
+        <strong>8:30 AM on Thursday, May 29, 2025</strong> as we honor our graduates at the 374th commencement exercises.
+      </p>
+      <a href="#" class="livestream-button">Watch the Livestream <span class="arrow-icon">&#10140;</span></a>
+    </div>
+  </section>
+  <section class="about-section">
+  <div class="about-text">
+    <h2>About Commencement</h2>
+    <p>Each year, Harvard's dedicated faculty, staff, administrators, alumni, and students come together to plan a series of commencement events that honor the achievements and bright futures of our outstanding graduates.</p>
+    <p>Commencement offers an opportunity to celebrate and reflect on the contributions of everyone in the Harvard community who has supported our students' success.</p>
+  </div>
+
+  <div class="info-cards">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="card1.png" alt="Graduates Celebrating">
+      <div class="card-text">
+        <a href="#"><strong>Information for Graduates</strong></a>
+        <p>Visit here for information regarding academic regalia, the student speech competition, tickets, and more.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="card2.png" alt="Harvard Gate">
+      <div class="card-text">
+        <a href="#"><strong>Information for Guests</strong></a>
+        <p>For information regarding schedule, hotels in the area, parking, and other resources, please visit here.</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="card3.png" alt="Harvard History">
+      <div class="card-text">
+        <a href="#"><strong>History of Commencement</strong></a>
+        <p>Beginning in 1642, Commencement is Harvard's oldest, still celebrated tradition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
